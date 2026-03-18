@@ -1,0 +1,17 @@
+services:
+  sbbs:
+    build: .
+    container_name: sbbs
+    #environment:
+    #  - SBBSCTRL=/sbbs/ctrl
+    #  - LD_LIBRARY_PATH=/sbbs/src/3rdp/gcc.linux.x64.release/mozjs/lib
+    volumes:
+      - ./sbbs/ctrl:/sbbs/ctrl
+      - ./sbbs/data:/sbbs/data
+      - ./sbbs/text:/sbbs/text
+      - ./sbbs/web:/sbbs/web
+    ports:
+      - "23:23"    # Telnet
+      - "80:80"    # HTTP
+      - "443:443"  # HTTPS
+    restart: unless-stopped
